@@ -1,0 +1,10 @@
+.history
+.terraform
+.infracost
+.python_packages
+__pycache__
+.venv
+.vscode
+*.lock*
+*.tfstate*
+*.tfvars
