@@ -31,7 +31,7 @@ else
 fi
 if [ ! -f "$folder/joinnetwork" ]; then
   echo "Cloning ZeroTier scripts..."
-  wget -P "$folder" "https://raw.githubusercontent.com/afuggetta/zerotier-scripts/master/joinnetwork"
+  wget -P "$folder" "https://raw.githubusercontent.com/afuggetta/ohmr-otak/main/TAK/joinnetwork"
   chmod +x $folder/joinnetwork
   echo "ZeroTier scripts cloned."
 fi
