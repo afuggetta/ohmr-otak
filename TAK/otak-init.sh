@@ -46,8 +46,7 @@ if [ ! -d "$folder" ]; then
   git clone https://github.com/afuggetta/tak-server.git /home/takuser/tak-server
   cd $folder
   wget "https://ohmr-tak.nyc3.digitaloceanspaces.com/takserver-docker-4.8-RELEASE-31.zip"
-  MYIP=`zerotier-cli get $NETWORK ip`
-  ./scripts/setup.sh $MYIP
+  ./scripts/setup.sh
 else
   echo "Folder already exists. Will not clone it again, moving on."
 fi
