@@ -14,6 +14,10 @@ provider "digitalocean" {
   token = var.digitalocean_token
 }
 
+provider "zerotier" {
+  zerotier_central_token = var.zerotier_central_token
+}
+
 resource "zerotier_network" "otak-network" {
   name        = "OTAK"
   description = "OTAK VPN"
@@ -37,6 +41,7 @@ resource "zerotier_network" "otak-network" {
 # KEYS/TOKENS
 data "digitalocean_ssh_keys" "keys" {}
 variable "digitalocean_token" {}
+variable "zerotier_central_token" {}
 variable "private_key_path" {
   description = "Absolute path to private key. For example: /home/user/.ssh/id_rsa"
   type        = string
@@ -52,3 +57,27 @@ resource "digitalocean_droplet" "mainserver" {
   tags     = ["droplet", "mainserver", ]
   user_data = file("post-terraform.yml")
 }
+
+# FIREWALL
+# resource "digitalocean_firewall" "otak-firewall" {
+#   name = "otak-firewall"
+
+#   droplet_ids = [digitalocean_droplet.mainserver.id]
+
+#   inbound_rule {
+#     protocol = "icmp"
+#     source_addresses = ["10.147.19.0/24"]
+#   }
+  
+#   inbound_rule {
+#     protocol = "tcp"
+#     port_range = "1-65535"
+#     source_addresses = ["10.147.19.0/24"]
+#   }
+  
+#   inbound_rule {
+#     protocol = "udp"
+#     port_range = "1-65535"
+#     source_addresses = ["10.147.19.0/24"]
+#   }
+# }
