@@ -42,10 +42,6 @@ resource "zerotier_network" "otak-network" {
 data "digitalocean_ssh_keys" "keys" {}
 variable "digitalocean_token" {}
 variable "zerotier_central_token" {}
-variable "private_key_path" {
-  description = "Absolute path to private key. For example: /home/user/.ssh/id_rsa"
-  type        = string
-}
 
 # DROPLETS
 resource "digitalocean_droplet" "mainserver" {
