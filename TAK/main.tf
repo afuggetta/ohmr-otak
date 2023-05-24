@@ -58,8 +58,6 @@ resource "digitalocean_droplet" "mainserver" {
 resource "digitalocean_firewall" "otak-firewall" {
   name = "otak-firewall"
 
-  droplet_ids = [digitalocean_droplet.mainserver.id]
-
   inbound_rule {
     protocol = "icmp"
     source_addresses = ["10.147.19.0/24"]
