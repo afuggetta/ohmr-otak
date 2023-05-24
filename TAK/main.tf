@@ -59,25 +59,31 @@ resource "digitalocean_droplet" "mainserver" {
 }
 
 # FIREWALL
-# resource "digitalocean_firewall" "otak-firewall" {
-#   name = "otak-firewall"
+resource "digitalocean_firewall" "otak-firewall" {
+  name = "otak-firewall"
 
-#   droplet_ids = [digitalocean_droplet.mainserver.id]
+  droplet_ids = [digitalocean_droplet.mainserver.id]
 
-#   inbound_rule {
-#     protocol = "icmp"
-#     source_addresses = ["10.147.19.0/24"]
-#   }
+  inbound_rule {
+    protocol = "icmp"
+    source_addresses = ["10.147.19.0/24"]
+  }
   
-#   inbound_rule {
-#     protocol = "tcp"
-#     port_range = "1-65535"
-#     source_addresses = ["10.147.19.0/24"]
-#   }
+  inbound_rule {
+    protocol = "tcp"
+    port_range = "1-65535"
+    source_addresses = ["10.147.19.0/24"]
+  }
   
-#   inbound_rule {
-#     protocol = "udp"
-#     port_range = "1-65535"
-#     source_addresses = ["10.147.19.0/24"]
-#   }
-# }
+  inbound_rule {
+    protocol = "udp"
+    port_range = "1-65535"
+    source_addresses = ["10.147.19.0/24"]
+  }
+
+  inbound_rule {
+    protocol = "tcp"
+    port_range = "22"
+    source_addresses = ["0.0.0.0/0", "::/0"]
+  }
+}

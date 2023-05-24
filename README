@@ -1,0 +1,8 @@
+After terraform complete:
+- ssh into VM: ssh -i <YOUR_SSH_KEY> -t root@<PHYSICALIP>
+- wait until the Cloud Init is complete (check /var/log/cloud-init-output.log for "OHMR cloud-init has finished")
+- run: curl https://raw.githubusercontent.com/afuggetta/ohmr-otak/main/TAK/otak-init.sh | bash -s <ZEROTIER_TOKEN> <NETWORKID> 1
+
+known issues:
+Password complexity check failed. Password must be a minimum of 15 characters including 1 uppercase, 1 lowercase, 1 number, and 1 special character from this list [-_!@#$%^&*(){}[]+=~`|:;<>,./?].
+RESTART PROCESS...
